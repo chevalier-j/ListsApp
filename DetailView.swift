@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct DetailView: View {
+    @State var popoverIsShowing = false
     var data: TableData
     var body: some View {
-        Text(data.detail)
+        VStack {
+            Text(data.detail)
+            Button("Show Popover") {
+                popoverIsShowing = true
+            }
+            .padding()
+            .sheet(isPresented: $popoverIsShowing, content: {
+                Text("Hi popover!")
+            })
+        }
     }
 }
 
