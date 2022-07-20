@@ -12,11 +12,14 @@ struct DetailView: View {
     var data: TableData
     var body: some View {
         VStack {
-            Text(data.detail)
+            Text("Operating system: " + data.detail)
+            Text("Current version: \(data.version)")
+
             Button("Show Popover") {
                 popoverIsShowing = true
             }
-            .padding()
+            .font(.largeTitle)
+            .foregroundColor(.red)
             .sheet(isPresented: $popoverIsShowing, content: {
                 Text("Hi popover!")
             })
